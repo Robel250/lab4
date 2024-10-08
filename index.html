@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>If two number are the same ,multiply tham by3</h3>
+    <p>input number<input type="number" id="num1"></p>
+  <p> input number <input type="number" id="num2">
+  </p>
+  <button type=" button" onclick="sumSameNumber()">result</button>
+  <br>
+  <br>
+  <h3>Guest radom Number</h3>
+<input type="number" id="num3">
+
+<p><button type="button" onclick="checkRandomNumber()">submited</button></p> 
+<p id="result"></p>
+<br>
+<br>
+<input type="number" id="num4">
+<input type="number" id="num5">
+<button type="button" onclick="range()"> True/false</button>
+<p id="outputplaces"></p>
+<br>
+<br>
+<h3>Find the closest value to 100</h3>
+<input type="number" id="firstnumber" >
+<input type="number" id="secondnumber" >
+<button type="button" onclick="closestValue()">Submit</button>
+<p id="output"></p>
+
+
+
+<br>
+<br>
+
+
+
+<h3>Add items to the Array</h3>
+    <input type="number" id="itemInput">
+    <button type="button" onclick="addItem()">Add</button>
+    <button type="button" onclick="displayItem()">Display</button>
+    <p id="output1"></p>
+    <script>
+
+        function sumSameNumber(){
+            const num1=parseInt(document.getElementById('num1').value)
+
+            const num2=parseInt(document.getElementById('num2').value)
+             let result;
+             if(num1===num2){ 
+                result= 3*(num1+num2);
+             }
+             else{ result=num1+num2}
+
+
+             alert("the result is"+ result)
+        }
+
+
+         function checkRandomNumber(){
+           
+        const radonNumber=Math.floor(Math.random()*10)+1;
+        const userName=parseInt(document.getElementById("num3").value);
+
+        if(radonNumber===userName){ 
+            document.getElementById("result").innerHTML="Good Job!you guessed the hidden value"
+        }
+        else if(userName>10){
+            document.getElementById("result").innerHTML="pls enter a number between 1 upto 10"
+
+        }
+        else{document.getElementById("result").innerHTML="try Again! The answer is:"+radonNumber}
+       
+    }
+
+    function range(){
+        const firstnumber=parseInt(document.getElementById("num4").value);   
+        const secondnumber=parseInt(document.getElementById("num5").value);  
+        const outputplaces= document.getElementById("outputplaces")
+        const isInRange=(firstnumber>=50 && firstnumber<=99) 
+        && (secondnumber>=50 &&secondnumber <=99);
+
+        if(isInRange){document.getElementById("outputplaces").innerHTML="true"}
+        else{ document.getElementById("outputplaces").innerHTML="out of range"}
+
+    }
+    function closestValue() {
+           
+           let num1 = parseInt(document.getElementById("firstnumber").value);
+           let num2 = parseInt(document.getElementById("secondnumber").value);
+
+           let diff1 = Math.abs(100 - num1);
+           let diff2 = Math.abs(100 - num2);
+
+           if (diff1 < diff2) {
+               document.getElementById("output").innerHTML = "First number (" + num1 + ") is closer to 100.";
+           } else if (diff2 < diff1) {
+               document.getElementById("output").innerHTML = "Second number (" + num2 + ") is closer to 100.";
+           } else {
+               document.getElementById("output").innerHTML = "Both numbers (" + num1 + " and " + num2 + ") are equally close to 100.";
+           }
+       }
+
+
+
+
+
+       let itemsArray=[];
+        function addItem(){
+            let newItem=parseInt(document.getElementById("itemInput").value);
+
+            if(newItem){
+                itemsArray.push(newItem);
+             document.getElementById("itemInput").value="";
+            }
+            else{
+                alert("Please enter a valid number.")
+            }
+        }
+        function displayItem(){
+            let output1="";
+             console.log(itemsArray) 
+            for (let i = 0; i < itemsArray.length; i++) {
+                output1 += "Element " + (i + 1) + " = " + itemsArray[i]+"<br>" ;
+
+             
+            }
+
+            document.getElementById("output1").innerHTML=output1;
+        }
+  
+        
+    </script>
+</body>
+</html>
